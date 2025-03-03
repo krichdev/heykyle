@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fira_Code } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const firaCode = Fira_Code({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  display: "swap",
+  variable: "--font-fira-code",
+  weight: "400",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,8 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${firaCode.variable} antialiased font-mono font-medium text-zinc-800`}
       >
+        <img
+          src="/images/coffee-stain.png"
+          className="absolute -top-20 -left-12 w-64 h-64 opacity-20 -rotate-45"
+        />
         {children}
       </body>
     </html>

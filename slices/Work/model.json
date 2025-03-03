@@ -1,0 +1,46 @@
+{
+  "id": "work",
+  "type": "SharedSlice",
+  "name": "Work",
+  "description": "Work",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "work": {
+          "type": "Group",
+          "config": {
+            "label": "Work",
+            "repeat": true,
+            "fields": {
+              "company": {
+                "type": "Link",
+                "config": {
+                  "label": "Company",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "work"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
