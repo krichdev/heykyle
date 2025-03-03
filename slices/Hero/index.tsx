@@ -29,8 +29,8 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           </Heading>
           <PrismicRichText field={slice.primary.body} />
           <div className="flex gap-4">
-            {slice.primary.linkedin && <Link href={slice.primary.linkedin.url}><Linkedin className="text-zinc-600" /></Link>}
-            {slice.primary.github && <Link href={slice.primary.github.url}><Github className="text-zinc-600" /></Link>}
+            {slice.primary.linkedin && <PrismicNextLink field={slice.primary.linkedin}><Linkedin className="text-zinc-600" /></PrismicNextLink>}
+            {slice.primary.github && <PrismicNextLink field={slice.primary.github}><Github className="text-zinc-600" /></PrismicNextLink>}
           </div>
         </div>
         <div className="md:w-1/2 h-auto mt-8 md:mt-0">
