@@ -13,7 +13,10 @@
   },
   "aboutMe": {
     "heading": "About me",
-    "description": "A few sentences about who you are and what you do."
+    "description": [
+      "I'm a software engineer who loves building things that are fast, scalable, and actually enjoyable to use. Whether it's designing a solid backend architecture, optimizing frontend performance, or making sure everything runs smoothly in production, I like solving problems that make an impact. I work across the stack, using tools like TypeScript, React, Node, and cloud services to build apps that are both powerful and maintainable.",
+      "I'm always looking for ways to make code cleaner, systems more efficient, and developer workflows smoother. Whether it's tweaking API performance, figuring out a better way to handle data, or just geeking out over a new tool, I enjoy the process of refining and improving how things work. Most of all, I love building products that feel great to use and help people get things done."
+    ]
   },
   "work": {
     "heading": "Work",

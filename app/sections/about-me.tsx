@@ -10,8 +10,10 @@ export function AboutMe() {
         {heading}
       </Heading>
       <div className="z-10 border border-zinc-200 rounded-lg p-4 bg-white">
-        <div className="mt-4 text-sm text-zinc-800">
-          <p>{description}</p>
+        <div className="mt-4 text-sm text-zinc-800 flex flex-col gap-4">
+          {description.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
       </div>
     </Bounded>

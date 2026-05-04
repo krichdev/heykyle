@@ -10,7 +10,7 @@ export type Content = {
     linkedin?: string;
     github?: string;
   };
-  aboutMe: { heading: string; description: string };
+  aboutMe: { heading: string; description: string[] };
   work: {
     heading: string;
     items: { company: string; logo: string; description: string }[];
