@@ -6,6 +6,7 @@ export type Content = {
     heading: string;
     body: string;
     image: string;
+    imageAlt?: string;
     linkedin?: string;
     github?: string;
   };

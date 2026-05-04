@@ -4,7 +4,7 @@ import { Linkedin, Github } from "lucide-react";
 import { content } from "@/lib/content";
 
 export function Hero() {
-  const { heading, body, image, linkedin, github } = content.hero;
+  const { heading, body, image, imageAlt, linkedin, github } = content.hero;
   return (
     <Bounded>
       <div className="flex flex-col md:flex-row justify-between items-center">
@@ -28,7 +28,7 @@ export function Hero() {
         </div>
         <div className="md:w-1/2 h-auto mt-8 md:mt-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image} alt="" />
+          <img src={image} alt={imageAlt ?? ""} />
         </div>
       </div>
     </Bounded>
