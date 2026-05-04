@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "Kyle Richardson",
+    "description": "Personal site of Kyle Richardson."
+  },
+  "hero": {
+    "heading": "Hey, I'm Kyle.",
+    "body": "Short intro paragraph about you. Edit me in content.json.",
+    "image": "/images/hero.jpg",
+    "linkedin": "https://www.linkedin.com/",
+    "github": "https://github.com/"
+  },
+  "aboutMe": {
+    "heading": "About me",
+    "description": "A few sentences about who you are and what you do."
+  },
+  "work": {
+    "heading": "Work",
+    "items": [
+      {
+        "company": "Company name",
+        "logo": "/images/hero.jpg",
+        "description": "What you did here."
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Projects",
+    "items": [
+      {
+        "name": "Project name",
+        "image": "/images/hero.jpg",
+        "link": "https://example.com",
+        "description": "What this project is."
+      }
+    ]
+  },
+  "footer": {
+    "image": "/images/paper-texture.jpg"
+  }
+}

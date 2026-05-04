@@ -1,34 +1,24 @@
 import { Metadata } from "next";
-import { isFilled, asImageSrc } from "@prismicio/client";
-import { SliceZone } from "@prismicio/react";
+import { AboutMe } from "@/app/sections/about-me";
+import { Footer } from "@/app/sections/footer";
+import { Hero } from "@/app/sections/hero";
+import { Projects } from "@/app/sections/projects";
+import { Work } from "@/app/sections/work";
+import { content } from "@/lib/content";
 
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
-
-export default async function Page() {
-  const client = createClient();
-  const page = await client.getSingle("homepage");
-
-  return <SliceZone slices={page.data.slices} components={components} />;
+export default function Page() {
+  return (
+    <>
+      <Hero />
+      <AboutMe />
+      <Work />
+      <Projects />
+      <Footer />
+    </>
+  );
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const page = await client.getSingle("homepage");
-
-  return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
-    openGraph: {
-      title: isFilled.keyText(page.data.meta_title)
-        ? page.data.meta_title
-        : undefined,
-      description: isFilled.keyText(page.data.meta_description)
-        ? page.data.meta_description
-        : undefined,
-      images: isFilled.image(page.data.meta_image)
-        ? [asImageSrc(page.data.meta_image)]
-        : undefined,
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: content.meta.title,
+  description: content.meta.description,
+};
