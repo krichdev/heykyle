@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kyle Richardson</title>
+<meta name="description" content="Personal site of Kyle Richardson — product engineer." />
+
+<link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:     #fafaf7;
+    --ink:    #0a0a0a;
+    --ink-2:  #444444;
+    --ink-3:  #888888;
+    --line:   #e0dfd8;
+    --accent: #ff5722;
+    --rule:   2px solid var(--ink);
+
+    --sans: "Inter", system-ui, -apple-system, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .page {
+    max-width: 1240px;
+    margin: 0 auto;
+    border-left: var(--rule);
+    border-right: var(--rule);
+    background: var(--bg);
+  }
+
+  .topbar {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 0.8fr;
+    border-bottom: var(--rule);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .topbar > span,
+  .topbar > a {
+    padding: 12px 16px;
+    border-right: var(--rule);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .topbar > *:last-child { border-right: 0; }
+  .topbar a:hover { background: var(--ink); color: var(--bg); }
+  .topbar .dot {
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 2px rgba(255,87,34,0.25);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    border-bottom: var(--rule);
+  }
+  .hero-text {
+    padding: 56px 36px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: var(--rule);
+    min-height: 480px;
+  }
+  .hero-title {
+    margin: 0;
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: clamp(56px, 11vw, 152px);
+    line-height: 0.86;
+    letter-spacing: -0.055em;
+    text-transform: uppercase;
+  }
+  .hero-title .wave {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: wave 2.6s ease-in-out infinite;
+    animation-delay: 0.6s;
+    font-size: 0.78em;
+    vertical-align: -0.02em;
+    margin-left: 0.05em;
+  }
+  @keyframes wave {
+    0%, 60%, 100% { transform: rotate(0); }
+    65% { transform: rotate(20deg); }
+    72% { transform: rotate(-10deg); }
+    79% { transform: rotate(20deg); }
+    86% { transform: rotate(-8deg); }
+    93% { transform: rotate(12deg); }
+  }
+  .hero-title .accent { color: var(--accent); }
+
+  .hero-foot {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: end;
+    border-top: 1px solid var(--ink);
+    padding-top: 18px;
+  }
+  .hero-foot .blurb {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 38ch;
+    margin: 0;
+  }
+  .hero-foot .stats {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: right;
+  }
+  .hero-foot .stats b { color: var(--ink); font-weight: 700; }
+
+  .hero-photo {
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .photo-slot {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        135deg,
+        transparent 0 18px,
+        rgba(10,10,10,0.06) 18px 19px
+      );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    color: var(--ink-2);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .photo-slot .crosshair {
+    position: absolute;
+    width: 14px; height: 14px;
+    color: var(--ink);
+  }
+  .photo-slot .crosshair.tl { top: 8px; left: 8px; }
+  .photo-slot .crosshair.tr { top: 8px; right: 8px; }
+  .photo-slot .crosshair.bl { bottom: 8px; left: 8px; }
+  .photo-slot .crosshair.br { bottom: 8px; right: 8px; }
+  .photo-slot .crosshair::before,
+  .photo-slot .crosshair::after {
+    content:"";
+    position: absolute;
+    background: currentColor;
+  }
+  .photo-slot .crosshair::before { top: 50%; left: 0; right: 0; height: 1.5px; transform: translateY(-50%); }
+  .photo-slot .crosshair::after  { left: 50%; top: 0; bottom: 0; width: 1.5px;  transform: translateX(-50%); }
+
+  .photo-slot .center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+  .photo-slot .center .label {
+    background: var(--bg);
+    border: var(--rule);
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .photo-slot .center .label small {
+    display: block;
+    font-weight: 400;
+    color: var(--ink-2);
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+  }
+  .photo-slot .filenum {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink-2);
+  }
+  .photo-slot .reg {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink-2);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border-bottom: var(--rule);
+  }
+  .row > .k {
+    padding: 22px 18px;
+    border-right: var(--rule);
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .row > .k .num {
+    display: block;
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 10px;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+  }
+  .row > .v {
+    padding: 22px 28px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .row > .v.flush { padding: 0; }
+  .row > .v p { margin: 0; }
+  .row > .v p + p { margin-top: 12px; }
+  .row > .v p a {
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 1px;
+    transition: background 120ms;
+  }
+  .row > .v p a:hover { background: var(--accent); color: #fff; border-bottom-color: var(--accent); padding: 0 3px 1px; margin: 0 -3px; }
+
+  .jobs { display: flex; flex-direction: column; }
+  .job {
+    display: grid;
+    grid-template-columns: 110px 1fr 220px 32px;
+    gap: 18px;
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    font-size: 14px;
+    transition: background 100ms, color 100ms;
+  }
+  .job:last-child { border-bottom: 0; }
+  .job .yr { font-family: var(--mono); font-size: 12px; font-weight: 600; }
+  .job .co { font-weight: 700; font-size: 15px; letter-spacing: -0.005em; }
+  .job .ro { color: var(--ink-2); font-size: 13px; text-align: right; }
+  .job .arr { text-align: right; color: var(--ink-3); font-family: var(--mono); }
+  .job:hover { background: var(--ink); color: var(--bg); }
+  .job:hover .ro { color: var(--bg); }
+  .job:hover .arr { color: var(--accent); }
+
+  .projects { display: flex; flex-direction: column; }
+  .project {
+    display: grid;
+    grid-template-columns: 70px 1fr 90px 60px 32px;
+    gap: 18px;
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    font-size: 14px;
+    transition: background 100ms, color 100ms;
+  }
+  .project:last-child { border-bottom: 0; }
+  .project .yr { font-family: var(--mono); font-size: 11px; color: var(--ink-2); }
+  .project .name { font-weight: 700; font-size: 15px; }
+  .project .desc { color: var(--ink-2); font-size: 13px; }
+  .project .meta { font-family: var(--mono); font-size: 11px; text-align: right; color: var(--ink-2); }
+  .project .arr { text-align: right; color: var(--ink-3); font-family: var(--mono); }
+  .project:hover { background: var(--ink); color: var(--bg); }
+  .project:hover .yr,
+  .project:hover .desc,
+  .project:hover .meta { color: var(--bg); opacity: 0.85; }
+  .project:hover .arr { color: var(--accent); }
+
+  .writing { display: flex; flex-direction: column; }
+  .write {
+    display: grid;
+    grid-template-columns: 1fr 70px 70px 32px;
+    gap: 18px;
+    padding: 14px 28px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    font-size: 14px;
+    transition: background 100ms, color 100ms;
+  }
+  .write:last-child { border-bottom: 0; }
+  .write .t { font-weight: 600; }
+  .write .yr { font-family: var(--mono); font-size: 11px; color: var(--ink-2); text-align: right; }
+  .write .read { font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-align: right; }
+  .write .arr { text-align: right; color: var(--ink-3); font-family: var(--mono); }
+  .write:hover { background: var(--ink); color: var(--bg); }
+  .write:hover .yr, .write:hover .read { color: var(--bg); opacity: 0.85; }
+  .write:hover .arr { color: var(--accent); }
+
+  .now { display: grid; grid-template-columns: 1fr 1fr; }
+  .now-item {
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+  }
+  .now-item:nth-child(2n) { border-right: 0; }
+  .now-item:nth-last-child(-n+2) { border-bottom: 0; }
+  .now-item .k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .now-item .v {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .contact {
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+  .contact .big {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(28px, 5vw, 56px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin: 0;
+  }
+  .contact .big a {
+    border-bottom: 4px solid var(--ink);
+    padding-bottom: 4px;
+    transition: color 120ms, border-color 120ms;
+  }
+  .contact .big a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .contact .links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .contact .links a {
+    border: var(--rule);
+    padding: 8px 12px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--bg);
+    transition: background 120ms, color 120ms;
+  }
+  .contact .links a:hover { background: var(--ink); color: var(--bg); }
+
+  .bottombar {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 0.8fr;
+    border-top: var(--rule);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .bottombar > span,
+  .bottombar > a {
+    padding: 14px 16px;
+    border-right: var(--rule);
+    color: var(--ink-2);
+  }
+  .bottombar > *:last-child { border-right: 0; }
+  .bottombar a:hover { background: var(--ink); color: var(--bg); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { border-right: 0; border-bottom: var(--rule); min-height: 0; padding: 32px 22px; }
+    .hero-photo { aspect-ratio: 4 / 3; }
+    .hero-foot { grid-template-columns: 1fr; gap: 16px; }
+    .hero-foot .stats { text-align: left; }
+    .row { grid-template-columns: 120px 1fr; }
+    .row > .k { padding: 16px 12px; font-size: 9.5px; }
+    .row > .v { padding: 16px 18px; }
+    .job, .project, .write { grid-template-columns: 1fr; gap: 4px; padding: 14px 18px; }
+    .job .ro, .write .yr, .write .read, .project .meta, .project .yr { text-align: left; }
+    .now { grid-template-columns: 1fr; }
+    .now-item { border-right: 0; }
+    .topbar, .bottombar { grid-template-columns: 1fr 1fr; }
+    .topbar > *, .bottombar > * { border-right: 0 !important; border-bottom: 1px solid var(--ink); }
+  }
+</style>
+</head>
+<body id="top">
+<main class="page">
+
+  <nav class="topbar">
+    <span><span class="dot"></span> Kyle Richardson — Software Engineer</span>
+    <span>Idaho · PST</span>
+    <a href="mailto:kyle@heykyle.com">kyle@heykyle.com ↗</a>
+    <span>v.2026</span>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        Hey, <span class="wave" aria-hidden="true">👋</span><br/>
+        I'm <span class="accent">Kyle</span>
+      </h1>
+
+      <div class="hero-foot">
+        <p class="blurb">Full-stack product engineer. Always learning, product-focused, passionate about creating amazing experiences on the web.</p>
+        <div class="stats">
+          ★ <b>Product</b> · Engineering<br/>
+          ◆ <b>TypeScript</b> · React · Node<br/>
+          ✎ <b>AI-accelerated</b> shipping
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img class="hero-img" src="https://images.prismic.io/heykyle/Z79WiJ7c43Q3gRo8_helloimkyle-hero.png?auto=format,compress" alt="Kyle Richardson" />
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="k"><span class="num">A / 01</span>About</div>
+    <div class="v">
+      <p>I'm a full-stack product engineer who builds fast, scalable systems using TypeScript, React, Node, and cloud services. I leverage AI tools to accelerate development and ship faster without sacrificing quality.</p>
+      <p>I'm obsessed with solving problems that matter and getting to market quickly. Whether it's designing solid backend architecture, optimizing performance, or managing production systems, I focus on what drives real impact. I love building products that feel great and help people get things done.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="k"><span class="num">A / 02</span>Worked at</div>
+    <div class="v flush">
+      <div class="jobs">
+        <a class="job" href="https://www.trmlabs.com" target="_blank" rel="noopener">
+          <span class="yr">2025 →</span>
+          <span class="co">TRM Labs</span>
+          <span class="ro">Software Engineer · Remote</span>
+          <span class="arr">↗</span>
+        </a>
+        <a class="job" href="https://www.alkymi.io" target="_blank" rel="noopener">
+          <span class="yr">2021–25</span>
+          <span class="co">Alkymi</span>
+          <span class="ro">Sr. Frontend Engineer · Remote</span>
+          <span class="arr">↗</span>
+        </a>
+        <a class="job" href="#">
+          <span class="yr">2019–21</span>
+          <span class="co">Botany</span>
+          <span class="ro">Founding Engineer · Remote</span>
+          <span class="arr">↗</span>
+        </a>
+        <a class="job" href="https://www.tirebuyer.com" target="_blank" rel="noopener">
+          <span class="yr">2017–19</span>
+          <span class="co">TireBuyer</span>
+          <span class="ro">Frontend Engineer · Seattle</span>
+          <span class="arr">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="k"><span class="num">B / 01</span>I make</div>
+    <div class="v flush">
+      <div class="projects">
+        <a class="project" href="https://paper.8d8.dev" target="_blank" rel="noopener">
+          <span class="yr">2026</span>
+          <span><span class="name">Paper Trade</span> <span class="desc">— prediction market paper trading</span></span>
+          <span class="meta">web</span>
+          <span class="meta">WIP</span>
+          <span class="arr">↗</span>
+        </a>
+        <a class="project" href="https://www.recordtestimonial.com" target="_blank" rel="noopener">
+          <span class="yr">2026</span>
+          <span><span class="name">Record Testimonial</span> <span class="desc">— record &amp; share video testimonials</span></span>
+          <span class="meta">web</span>
+          <span class="meta">WIP</span>
+          <span class="arr">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="k"><span class="num">B / 02</span>Right now</div>
+    <div class="v flush">
+      <div class="now">
+        <div class="now-item">
+          <div class="k">Building</div>
+          <div class="v">Product engineering work — full-stack, AI-accelerated.</div>
+        </div>
+        <div class="now-item">
+          <div class="k">Reading</div>
+          <div class="v">Whatever's on the nightstand this week.</div>
+        </div>
+        <div class="now-item">
+          <div class="k">Listening</div>
+          <div class="v">A rotating mix — podcasts and new records.</div>
+        </div>
+        <div class="now-item">
+          <div class="k">Eating</div>
+          <div class="v">Whatever the kids will tolerate this week.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="k"><span class="num">C / 01</span>Contact</div>
+    <div class="v flush">
+      <div class="contact">
+        <p class="big"><a href="mailto:kyle@heykyle.com">kyle@heykyle.com</a></p>
+        <div class="links">
+          <a href="https://www.github.com/krichdev">GitHub</a>
+          <a href="https://www.linkedin.com/in/kylecodes">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="bottombar">
+    <span>© Kyle Richardson · 2026</span>
+    <span>Built with care, in Idaho</span>
+    <span>Updated · May 2026</span>
+    <a href="#top">↑ Top</a>
+  </nav>
+
+</main>
+</body>
+</html>
